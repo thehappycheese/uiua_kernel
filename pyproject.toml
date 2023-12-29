@@ -6,22 +6,18 @@ build-backend = "hatchling.build"
 name = "uiua_kernel"
 version = "0.1.0"
 description = "A custom Jupyter kernel for UIUA"
-authors = [{name = "Your Name", email = "your.email@example.com"}]
+authors = [{name = "thehappycheese"}]
 license = "MIT"
 readme = "readme.md"
-requires-python = ">=3.6"
+requires-python = ">=3.10"
 dependencies = [
     "ipykernel",
     "ansi2html"
 ]
 
 [project.urls]
-homepage = "https://yourprojecthomepage.com"
-repository = "https://github.com/yourusername/uiua_kernel"
-documentation = "https://yourprojectdocumentation.com"
-
-[project.optional-dependencies]
-test = ["pytest", "pytest-cov"]
+repository = "https://github.com/thehappycheese/uiua_kernel"
+uiua = "https://www.uiua.org/"
 
 [tool.hatch.build.targets.wheel]
 packages=["src/uiua_kernel"]
