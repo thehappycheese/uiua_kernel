@@ -36,9 +36,11 @@ execution, like [Uiua pad](https://www.uiua.org/pad)
 
 ### 1.2. Color Of Output
 
+I messed around with the python package `ansi2html` but im pretty sure the colour codes just aren't in the output. Maybe they are there but they are getting lost somehow in the mysterious machinery of `subprocess.Popen`.
+
 `uiua eval` detects if it is running in an interactive terminal, and if not, it
 does not appear to output ansi colour codes. The `eval` command offers a
-`--no-color` flag, but it should also offer a `--always-color` flag I think
+`--no-color` flag, but it should also offer a `--always-color` flag I think.
 
 ### 1.3. Large Output; Sounds and Images
 

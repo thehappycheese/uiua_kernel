@@ -11,8 +11,7 @@ license = "MIT"
 readme = "readme.md"
 requires-python = ">=3.10"
 dependencies = [
-    "ipykernel",
-    "ansi2html"
+    "ipykernel"
 ]
 
 [project.urls]

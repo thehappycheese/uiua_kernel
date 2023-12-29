@@ -1,8 +1,5 @@
 import subprocess
 from ipykernel.kernelbase import Kernel
-from ansi2html import Ansi2HTMLConverter
-
-ansi_to_html_converter = Ansi2HTMLConverter()
 
 class UIUAKernel(Kernel):
     implementation = 'UIUA'
@@ -40,7 +37,7 @@ class UIUAKernel(Kernel):
                 #stdin    = subprocess.PIPE,
                 stdout   = subprocess.PIPE,
                 stderr   = subprocess.PIPE,
-                #encoding ="ansi",
+                #encoding ="utf-8",
                 #text   = True,
                 #universal_newlines=True,
             )
@@ -52,7 +49,7 @@ class UIUAKernel(Kernel):
                     {
                         'execution_count': 1,
                         'data': {
-                            "text/html":ansi_to_html_converter.convert(str(stdout)),
+                            "text/plain":stdout.decode("utf-8"),
 
                         },
                         'metadata': {},
@@ -72,8 +69,7 @@ class UIUAKernel(Kernel):
                     {
                         'execution_count': 1,
                         'data': {
-                            "text/html":ansi_to_html_converter.convert(str(stdout)),
-
+                            "text/plain":stdout.decode("utf-8"),
                         },
                         'metadata': {},
                     }
