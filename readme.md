@@ -11,7 +11,9 @@ crudely implemented as a python wrapper.
   - [1.2. Color Of Output](#12-color-of-output)
   - [1.3. Large Output; Sounds and Images](#13-large-output-sounds-and-images)
 - [2. Future Direction](#2-future-direction)
+- [See Also](#see-also)
 
+![Screenshot](./readme_extra/screenshot.JPG)
 
 ## Usage / Development instructions
 
@@ -60,3 +62,10 @@ rust, this would be much easier than maintaining this python wrapper. The
 place to start, also a good example to work from might be the
 [evcxr](https://github.com/evcxr/evcxr) is basically a jupyter kernel for the
 rust programming language itself (Insane, I know, but its very cool).
+
+
+## See Also
+
+- Uiua <https://github.com/uiua-lang/uiua>
+- Uiua Keypad <https://github.com/thehappycheese/uiua-keypad>
+- Uiua Talon <https://github.com/thehappycheese/uiua-talon>
