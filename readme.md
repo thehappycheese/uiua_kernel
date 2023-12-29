@@ -5,17 +5,18 @@ crudely implemented as a python wrapper.
 
 > This is an experimental repo, and not currently part of the official Uiua project.
 
-- [Usage / Development instructions](#usage--development-instructions)
-- [1. Implementation Notes](#1-implementation-notes)
-  - [1.1. Formatting](#11-formatting)
-  - [1.2. Color Of Output](#12-color-of-output)
-  - [1.3. Large Output; Sounds and Images](#13-large-output-sounds-and-images)
-- [2. Future Direction](#2-future-direction)
-- [See Also](#see-also)
+- [1. Usage / Development instructions](#1-usage--development-instructions)
+- [2. Implementation Notes](#2-implementation-notes)
+  - [2.1. Formatting](#21-formatting)
+  - [2.2. Color Of Output](#22-color-of-output)
+  - [2.3. Large Output; Sounds and Images](#23-large-output-sounds-and-images)
+  - [2.4. `uiua repl` vs `uiua eval`](#24-uiua-repl-vs-uiua-eval)
+- [3. Future Direction](#3-future-direction)
+- [4. See Also](#4-see-also)
 
 ![Screenshot](./readme_extra/screenshot.JPG)
 
-## Usage / Development instructions
+## 1. Usage / Development instructions
 
 This repo is not ready for general use, although it does work, so only
 development instructions are provided; It requires that
@@ -28,23 +29,23 @@ pip install -e .
 jupyter kernelspec install ".\src\uiua_kernel" --user --log-level DEBUG 
 ```
 
-## 1. Implementation Notes
+## 2. Implementation Notes
 
-### 1.1. Formatting
+### 2.1. Formatting
 
 A Jupyter Kernel apparently cannot offer to format cell contents. This is still
 a language server feature, and it is not clear if it can be triggered on cell
 execution, like [Uiua pad](https://www.uiua.org/pad)
 
-### 1.2. Color Of Output
+### 2.2. Color Of Output
 
-I messed around with the python package `ansi2html` but im pretty sure the colour codes just aren't in the output. Maybe they are there but they are getting lost somehow in the mysterious machinery of `subprocess.Popen`.
+I messed around with the python package `ansi2html` but I'm pretty sure the colour codes just aren't in the output. Maybe they are there but they are getting lost somehow in the mysterious machinery of `subprocess.Popen`.
 
-`uiua eval` detects if it is running in an interactive terminal, and if not, it
+I think `uiua eval` detects if it is running in an interactive terminal, and if not, it
 does not appear to output ansi colour codes. The `eval` command offers a
-`--no-color` flag, but it should also offer a `--always-color` flag I think.
+`--no-color` flag, but maybe it should also offer a `--always-color` flag or something.
 
-### 1.3. Large Output; Sounds and Images
+### 2.3. Large Output; Sounds and Images
 
 Currently this seems impossible; `uiua eval` can only output a formatted text
 stream.
@@ -53,7 +54,12 @@ The jupyter kernel apparently requires image data in a base64 encoded format.
 Perhaps uiua could output a JSON-formatted output to facilitate appropriate
 output rendering.
 
-## 2. Future Direction
+### 2.4. `uiua repl` vs `uiua eval`
+
+I did not try to connect this kernel wrapper to `uiua repl`.
+The repl also does not maintain the state of the stack between calls, so I am not sure if there is any reason to try?
+
+## 3. Future Direction
 
 It seems to me like the best way forward is to implement the kernel directly in
 rust, this would be much easier than maintaining this python wrapper. The
@@ -64,7 +70,7 @@ place to start, also a good example to work from might be the
 rust programming language itself (Insane, I know, but its very cool).
 
 
-## See Also
+## 4. See Also
 
 - Uiua <https://github.com/uiua-lang/uiua>
 - Uiua Keypad <https://github.com/thehappycheese/uiua-keypad>
