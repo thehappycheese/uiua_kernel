@@ -6,6 +6,6 @@
         "-f",
         "{connection_file}"
     ],
-    "display_name": "UIUA",
+    "display_name": "Uiua",
     "language": "uiua"
 }

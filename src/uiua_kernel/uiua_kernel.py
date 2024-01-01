@@ -1,17 +1,21 @@
 import subprocess
 from ipykernel.kernelbase import Kernel
+import os
+from ansi2html import Ansi2HTMLConverter
+
+ansi_to_html = Ansi2HTMLConverter(dark_bg=True)
 
 class UIUAKernel(Kernel):
-    implementation = 'UIUA'
+    implementation = 'Uiua'
     implementation_version = '1.0'
-    language = 'python'
+    language = 'uiua'
     language_version = '0.1'
     language_info = {
-        'name': 'UIUA',
+        'name': 'uiua',
         'mimetype': 'text/plain',
-        'file_extension': '.ua',
+        'file_extension': 'ua',
     }
-    banner = "UIUA Kernel"
+    banner = "Uiua Kernel"
 
     def do_execute(
         self,
@@ -32,14 +36,17 @@ class UIUAKernel(Kernel):
             #         'text': f"We will try run\n```\nuiua.exe eval {code}\n```"
             #     }
             # )
+            env = os.environ.copy()
+            env["CLICOLOR_FORCE"] = "True"
             proc = subprocess.Popen(
                 args     = ["uiua.exe", "eval", code.encode("utf-8")],
                 #stdin    = subprocess.PIPE,
                 stdout   = subprocess.PIPE,
                 stderr   = subprocess.PIPE,
-                #encoding ="utf-8",
+                encoding ="utf-8",
                 #text   = True,
                 #universal_newlines=True,
+                env = env,
             )
             stdout, stderr = proc.communicate(code)
             if proc.returncode == 0:
@@ -49,7 +56,7 @@ class UIUAKernel(Kernel):
                     {
                         'execution_count': 1,
                         'data': {
-                            "text/plain":stdout.decode("utf-8"),
+                            "text/html":ansi_to_html.convert(stdout),
 
                         },
                         'metadata': {},
@@ -69,7 +76,7 @@ class UIUAKernel(Kernel):
                     {
                         'execution_count': 1,
                         'data': {
-                            "text/plain":stdout.decode("utf-8"),
+                            "text/html":ansi_to_html.convert(stdout),
                         },
                         'metadata': {},
                     }
